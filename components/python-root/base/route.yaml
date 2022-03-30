@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: python-root
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: python-root
+    app.kubernetes.io/part-of: purple-mermaid-app
+  name: python-root
+  namespace: jakumar
+spec:
+  port:
+    targetPort: 8080
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: python-root
+    weight: 100
+status: {}
